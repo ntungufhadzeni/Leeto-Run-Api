@@ -73,14 +73,16 @@ def get_total_by_id():
             continue
         total = total + result_dict['In']
     dict_result = result_schema.dump(result.first())
-    bus = dict_result['bus']
-    if bus < 10:
-        bus = '00' + str(bus)
-    else:
-        bus = '0' + str(bus)
+    if 'bus' in dict_result.keys():
+        bus = dict_result['bus']
+        if bus < 10:
+            bus = '00' + str(bus)
+        else:
+            bus = '0' + str(bus)
 
-    dict_result['bus'] = bus
-    dict_result.setdefault('total', total)
+        dict_result['bus'] = bus
+    if len(dict_result) > 0:
+        dict_result.setdefault('total', total)
 
     return make_response(dict_result)
 
