@@ -4,18 +4,18 @@ db = SQLAlchemy()
 
 
 class RunsModel(db.Model):
-    __tablename__ = 'trips_runs'
+    __tablename__ = 'trips_v2'
 
-    index = db.Column(db.Integer, primary_key=True, nullable=False)
-    IN = db.Column(db.Integer)
-    Run_id = db.Column(db.Float)
+    id = db.Column('index', db.Integer, primary_key=True, nullable=False)
+    run = db.Column('Run', db.String)
+    alarm = db.Column('Alarm Time', db.String)
+    bus = db.Column('Bus No', db.Float)
+    route = db.Column('Route', db.String)
+    date = db.Column('Date', db.String)
+    stop_name = db.Column('Stop Name', db.String)
+    In = db.Column('IN', db.Integer(), nullable=False)
+    Out = db.Column('Out', db.Integer(), nullable=False)
 
-    def __init__(self, in_count, run_id):
-        self.IN = in_count
-        self.Run_id = run_id
-
-    def __repr__(self):
-        return f'{self.Run_id}: {self.IN}'
 
 
 
